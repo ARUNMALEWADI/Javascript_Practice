@@ -38,13 +38,18 @@
   const textnode = document.createTextNode("Item 5");
   node.appendChild(textnode);
   node.setAttribute('Class','new-list');
- var ulist= document.getElementById("items");
- ulist.appendChild(node);
- var by_class=document.getElementsByClassName("new-list");
- by_class[0].style.color='red';
- var tag=document.getElementsByTagName('ul')[0];
- var select_li=tag.getElementsByTagName('li')[4];
-  select_li.style.fontSize = "x-large";
+  var select=document.querySelector('.list-group-item:nth-child(2)');
+  select.style.backgroundColor="green";
+  document.querySelector('.list-group-item:nth-child(3)').style.visibility='hidden';
+   select.style.color='green';
+  
+  var odd=document.querySelectorAll('li:nth-child(odd)');
+  for(var i=0;i<odd.length;i++)
+  { odd[i].style.backgroundColor='green';
+
+  }
+
+ 
 
 
  
