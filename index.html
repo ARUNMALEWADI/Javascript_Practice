@@ -14,19 +14,13 @@
     </div>
   </header>
   <div class="container">
-   <div id="main" class="card card-body">
-    <h2 class="title">Add Items</h2>
+   <div id="main" class="card card-body"><h2 class="title">Add Items</h2>
     <form class="form-inline mb-3">
       <input type="text" class="form-control mr-2">
       <input type="submit" class="btn btn-dark" value="Submit">
     </form>
     <h2 class="title">Items</h2>
-    <ul id="items" class="list-group">
-      <li class="list-group-item">Item 1</li>
-      <li class="list-group-item">Item 2</li>
-      <li class="list-group-item">Item 3</li>
-      <li class="list-group-item">Item 4</li>
-    </ul>
+    <ul id="items" class="list-group"><li class="list-group-item">Item 1</li><li class="list-group-item">Item 2</li><li class="list-group-item">Item 3</li><li class="list-group-item">Item 4</li></ul>
    </div>
   </div>
 
@@ -34,22 +28,34 @@
 
 </html>
 <script>
+
   const node = document.createElement("li");
   const textnode = document.createTextNode("Item 5");
   node.appendChild(textnode);
-  node.setAttribute('Class','new-list');
-  var select=document.querySelector('.list-group-item:nth-child(2)');
-  select.style.backgroundColor="green";
-  document.querySelector('.list-group-item:nth-child(3)').style.visibility='hidden';
-   select.style.color='green';
-  
-  var odd=document.querySelectorAll('li:nth-child(odd)');
-  for(var i=0;i<odd.length;i++)
-  { odd[i].style.backgroundColor='green';
+  node.setAttribute('Class','list-group-item');
+  const items=document.getElementById('items');
+  items.insertBefore(node,items.lastChild);
+ items.parentElement.style.backgroundColor='yellow';
+ items.firstElementChild.innerHTML="First Element Child";
+ items.lastElementChild.style.color='red';
+ document.getElementById('items').lastChild.style.color='red';
+document.getElementById('items').lastElementChild.innerHTML='lastelementchild';
+var parent=items.parentElement;
+parent.firstElementChild.style.backgroundColor='lightblue';
+parent.firstChild.style.color='orange';
+var nextsibling=parent.firstChild.nextElementSibling;
+nextsibling.setAttribute('id','forms');
+var hello =document.createElement('h1');
+var text=document.createTextNode("Hello");
+hello.appendChild(text);
+hello.className='helo';
+var insert=document.getElementsByClassName('container');
+var a=document.getElementById('header-title');
+insert[0].insertBefore(hello,a);
+items.insertBefore(hello,items.firstElementChild);
 
-  }
 
- 
+
 
 
  
