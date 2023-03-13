@@ -11,53 +11,45 @@ text-align: center;
 
 <body>
 
-<form style="border:2px solid Tomato"  action="#" id="form" onsubmit="call(event)" >
-    <img src="https://img.freepik.com/free-vector/organic-flat-customer-support-illustration_23-2148899174.jpg?w=996&t=st=1677687003~exp=1677687603~hmac=018000b1e9636a8c0787318b9eabdbfcdf3aafce7841de26d30d00c7b22c61d9.jpg" width="450" >
+<form style="border:2px solid Tomato"  action="#" id="form"  >
+    <img src="https://img.freepik.com/free-vector/organic-flat-customer-support-illustration_23-2148899174.jpg?w=996&t=st=1677687003~exp=1677687603~hmac=018000b1e9636a8c0787318b9eabdbfcdf3aafce7841de26d30d00c7b22c61d9.jpg"  width="450"  >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 <br>
-<label class ="text-muted" id="name" required>Name</label><br>
-<input type="text"  size="30" ><br>
+<label>Name:</label><br>
+<input type="text"  size="30" id="myname" class ="text"  required><br>
 Email:<br>
-
-
-<input type="email" name="email"id="email" size =" 30"  required><br>
+<input type="email" id="email" size =" 30"  required><br>
 Phone:<br>
-<input type="tel" id="phone" name="phone" pattern="[0-9]{0-9}[0-9]{0-9}{0-9]{0-9}{0-9}(0-9){0-9}{0-9}{0-9}" required>
+<input type="tel" id="phone"  pattern="[0-9]{0-9}[0-9]{0-9}{0-9}{0-9}{0-9}{0-9}{0-9}{0-9}{0-9}" required>
 <br>
 
-Time for call:<br>
-<input type="date" required >
-<select size="1" required>
+<label>Time for call:</label><br>
+<input type="date"  id="date" required >
+<select size="1" id="time" required>
     <option>10:00</option>
     <option>11:00</option>
     <option>12:00</option>
  </select>
 
- <div class="msg" id="ms"></div>
     <br>
-<input class= "button" type="submit" id="but" value="Submit">
+<input class= "button" type="submit" id="but" value="Submit" >
 </form>
-</body></html>
+</body>
+</html>
 <script>
-    function call(event)
-    {
-        event.preventDefault();
-        console.log(event.target.email.value);
-    }
+    
 var x = document.getElementById("form");
 var y = document.getElementById("but");
-var z=document.getElementById("name");
-var a=document.getElementById("email");
-var f=document.getElementById(".ms");
-x.addEventListener("mouseover",(myFunction));
-x.addEventListener("mouseout",(myFunction2));
-y.addEventListener("click",(f3));
-x.addEventListener("submit",(onsubmit));
+x.addEventListener("mouseover",myFunction);
+x.addEventListener("mouseout",myFunction2);
+y.addEventListener("click",f3);
+x.addEventListener("submit",onsubmit);
+
 
 function myFunction() {
- x.style.backgroundColor="red";
+ x.style.backgroundColor="yellow";
 }
 function myFunction2() {
  x.style.backgroundColor="white";
@@ -66,6 +58,15 @@ function f3()
 {  y.style.backgroundColor="grey";
 
 }
+function onsubmit()
+{  localStorage.setItem('Username',document.getElementById('myname').value);
+localStorage.setItem('Email',document.getElementById('email').value);
+localStorage.setItem('Phone',document.getElementById('phone').value);
+localStorage.setItem('Date',document.getElementById('date').value);
+localStorage.setItem('Time',document.getElementById('time').value);
+
+}
+
  
 
 
