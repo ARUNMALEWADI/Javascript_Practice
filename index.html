@@ -1,3 +1,4 @@
+
 <header id="main-header" class="bg-success text-white p-4 mb-3">
   <div class="container">
     <div class="row">
@@ -25,9 +26,83 @@
     <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
   </ul>
  </div>
+
 </div>
 <script>
-  itemlist=document.getElementById('items');
+
+
+
+//getting form
+var form=document.getElementById('addForm');
+//adding description box
+let description=document.createElement('input');
+description.type='text';
+description.className='form-control mr-2';
+description.placeholder='add description....';
+form.insertBefore(description,form.lastElementChild);
+
+
+//getting unorderlist
+itemlist=document.getElementById('items');
+
+//on submitting form add item and description to it
+form.addEventListener('submit',des);
+function des(e){
+  e.preventDefault();
+  //creating listitem
+  let node = document.createElement("li");
+node.setAttribute('Class','list-group-item');
+//geting input value to insert
+let descript=document.getElementById('item').value
+//adding descption &uservalue to node
+node.appendChild(document.createTextNode(descript+description.value));
+//adding delte button to node
+let delbutton =document.createElement('button');
+delbutton.className='btn btn-danger btn-sm float-right delete';
+delbutton.textContent='X';
+node.appendChild(delbutton);
+
+//adding edit button for namesake
+let ebutton=document.createElement('button');
+ebutton.textContent='Edit';
+node.appendChild(ebutton);
+
+//imserting current node
+itemlist.appendChild(node);
+}
+
+
+
+
+
+  //filter elements and given input to lowercase for searching
+ let filter=document.getElementById('filter');
+ //call for searching whenever we press key from keyboard
+ filter.addEventListener('keyup',filteritems);
+ function filteritems(e)
+ {//whwterver user enter while searching converted to lowecase 
+  let inputtext=e.target.value.toLowerCase();
+  //collected collectipn of li
+  let htmlcollection_lis=document.getElementsByTagName('li');
+ //made array of li and iterate
+   Array.from(htmlcollection_lis).forEach(function(htmlcollection_lis){
+
+   let itemname=htmlcollection_lis.firstChild.textContent;
+   let li_description=htmlcollection_lis.childNodes[1].textContent;
+   if(itemname.toLocaleLowerCase().indexOf(inputtext)!=-1 ||li_description.toLocaleLowerCase().indexOf(inputtext)!=-1 )
+   { htmlcollection_lis.style.display='block';
+
+   }
+   else
+   { 
+    htmlcollection_lis.style.display='none';
+   }
+    } );
+ 
+
+ }
+
+  //edit button
   for(let i=0;i<itemlist.children.length;i++)
     {  
       var editbutton=document.createElement('button');
@@ -35,18 +110,15 @@
        editbutton.appendChild(text);
        itemlist.children[i].appendChild(editbutton);
     }
-    
-      
-       
-    
 
+//Delete elements
   itemlist.addEventListener('click',f);
   function f(e){ 
-    
+
     if(e.target.classList.contains('delete'))
     { if(confirm('Do you want to delete '+e.target.parentElement.textContent))
        { itemlist.removeChild(e.target.parentElement)
-          
+
        }
 
     }
@@ -54,3 +126,9 @@
   }
 
 </script>
+
+ 
+
+
+
+
