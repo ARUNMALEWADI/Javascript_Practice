@@ -39,6 +39,8 @@ Phone:<br>
 <input class= "button" type="submit" id="but" value="Submit" >
 
 </form>
+<p id='out'></p>
+
 </html>
 <script>
     
@@ -78,10 +80,17 @@ function onsubmit()
       Time,
 
     }
-    localStorage.setItem('Userdetails',JSON.stringify(obj));
+    localStorage.setItem(email,JSON.stringify(obj));
+ let info=localStorage.getItem(email);
+ document.getElementById('out').innerHTML=info;
+ 
+ 
 }
 
 
+
 </script>
+
+
 
 
