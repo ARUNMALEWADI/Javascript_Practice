@@ -37,9 +37,11 @@ Phone:<br>
 
     <br>
 <input class= "button" type="submit" id="but" value="Submit" >
+<ul id="out">
+</ul>
 
 </form>
-<p id='out'></p>
+
 
 </html>
 <script>
@@ -65,24 +67,44 @@ function f3()
 {  y.style.backgroundColor="grey";
 
 }
-function onsubmit()
-{
+function onsubmit(e)
+{    e.preventDefault();
     let name=document.getElementById('myname').value;
-   let email=document.getElementById('email').value;
-   let phone=document.getElementById('phone').value;
-   let Date=document.getElementById('date').value;
-   let Time=document.getElementById('time').value;
+      let email=document.getElementById('email').value;
+      let phone=document.getElementById('phone').value;
+      let Date=document.getElementById('date').value;
+      let Time=document.getElementById('time').value;
+   
     const obj={
-      name,
-      email,
-      phone,
-      Date,
-      Time,
+    name,
+    email,
+    phone,
+    Date,
+    Time,
 
     }
-    localStorage.setItem(email,JSON.stringify(obj));
- let info=localStorage.getItem(email);
- document.getElementById('out').innerHTML=info;
+    localStorage.setItem(obj.email,JSON.stringify(obj));
+ //displaying storage
+ let out=document.createElement('li');
+ out.textContent=(obj.name+'  '+obj.email+'  '+obj.phone+'  '+obj.Date+'  '+obj.Time);
+ //delete button
+ let delte=document.createElement('button');
+ delte.addEventListener('click',del);
+ delte.textContent='Delete';
+ delte.style.backgroundColor='grey';
+ out.appendChild(delte);
+ document.getElementById('out').appendChild(out);
+
+ function del(e){
+    e.preventDefault();
+     document.getElementById('out').removeChild(delte.parentElement);
+     localStorage.removeItem(obj.email);
+     
+     
+   
+ }
+
+
  
  
 }
