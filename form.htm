@@ -64,14 +64,22 @@ function f3()
 
 }
 function onsubmit()
-{  localStorage.setItem('Username',document.getElementById('myname').value);
-localStorage.setItem('Email',document.getElementById('email').value);
-localStorage.setItem('Phone',document.getElementById('phone').value);
-localStorage.setItem('Date',document.getElementById('date').value);
-localStorage.setItem('Time',document.getElementById('time').value);
+{
+    let name=document.getElementById('myname').value;
+   let email=document.getElementById('email').value;
+   let phone=document.getElementById('phone').value;
+   let Date=document.getElementById('date').value;
+   let Time=document.getElementById('time').value;
+    const obj={
+      name,
+      email,
+      phone,
+      Date,
+      Time,
 
+    }
+    localStorage.setItem('Userdetails',JSON.stringify(obj));
 }
-
 
 
 </script>
