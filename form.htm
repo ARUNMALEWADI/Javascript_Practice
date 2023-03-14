@@ -93,6 +93,12 @@ function onsubmit(e)
  delte.textContent='Delete';
  delte.style.backgroundColor='grey';
  out.appendChild(delte);
+//edit button
+ let edit=document.createElement('button');
+ edit.textContent='Edit'
+ edit.style.backgroundColor='grey';
+ out.appendChild(edit);
+ edit.addEventListener('click',editing);
  document.getElementById('out').appendChild(out);
 
  function del(e){
@@ -102,6 +108,19 @@ function onsubmit(e)
      
      
    
+ }
+ function editing(e){
+    e.preventDefault();
+    document.getElementById('out').removeChild(delte.parentElement);
+  
+  document.getElementById('myname').value=obj.name;
+  document.getElementById('email').value=obj.email;
+  document.getElementById('date').value=obj.Date;
+  document.getElementById('phone').value=obj.phone;
+  document.getElementById('time').value=obj.Time;
+
+  localStorage.removeItem(obj.email);
+
  }
 
 
