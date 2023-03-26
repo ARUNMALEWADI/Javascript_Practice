@@ -25,19 +25,10 @@ const preMovie = async () => {
   console.log(`Husband:we should go in now`);
   console.log(`Wife: "i am hungry"`);
   
-  let popcorn = await getPopcorn;
-  console.log(`Husband: here is ${popcorn}`);
-	console.log(`Husband:we should go in now`);
-
-  console.log(`Wife: "I dont like popcorn without butter!"`);
-  let butter = await addButter;
-  console.log(`added ${butter}`);
-
-  
-  let drink=await getcoldDrinks;
-  console.log(`Wife: "i need colddrink`);
-    console.log(`Husband:"here is ${drink}"`);
-   
+ 
+ 
+   let [popcorn,butter,colddrink]= await Promise.all([getPopcorn,addButter,getcoldDrinks]);
+   console.log(`${popcorn},${butter},${colddrink}`);
   console.log(`Husband:Anything else darling`);
 	console.log(`Wife: lets go we are going to miss the preivew`);
   console.log(`Husband: thanks for the reminder *grin*`);
